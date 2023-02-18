@@ -1,0 +1,19 @@
+{
+  "name": "instagramclone",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fined187/Instagram-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fined187/Instagram-backend/issues"
+  },
+  "homepage": "https://github.com/fined187/Instagram-backend#readme"
+}
