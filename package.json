@@ -19,8 +19,13 @@
   },
   "homepage": "https://github.com/fined187/Instagram-backend#readme",
   "dependencies": {
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/merge": "^8.3.18",
+    "@graphql-tools/schema": "^9.0.16",
     "@prisma/client": "^4.10.1",
     "apollo-server": "^3.11.1",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0"
   },
   "devDependencies": {
