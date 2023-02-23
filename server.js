@@ -3,7 +3,10 @@ import { ApolloServer, gql } from "apollo-server";
 import schema from "./schema";
 
 const server = new ApolloServer({
-  schema
+  schema,
+  context: {
+    token: "1234"
+  }
 });
 
 const PORT = process.env.PORT;
