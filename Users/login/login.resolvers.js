@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 
 export default {
   Mutation: {
-    login: async(_, {userName, password}) => {
+    login: async (_, { userName, password }) => {
       //  find user with args.userName
-      const user = await client.user.findFirst({where: {userName}});
+      const user = await client.user.findFirst({where: { userName }});
       if(!user) {
         return {
           ok: false,
@@ -28,5 +28,5 @@ export default {
       };
       //  issue a token and send it to the user
     },
-  }
-}
+  },
+};
