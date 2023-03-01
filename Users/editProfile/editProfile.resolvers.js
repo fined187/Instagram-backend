@@ -1,19 +1,24 @@
+import fs, { write } from "fs";
 import client from "../../client.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { protectedResolver } from "../users.utils.js";
 import {GraphQLUpload} from "graphql-upload";
 
 const resolverFn = async (_, 
   {
-    firstName,
+    firstName, 
     lastName,
     userName,
     email,
     password: newPassword,
-    bio
-  }, { loggedInUser, protectResolver }
+    bio, 
+    avatar
+  }, { loggedInUser, protectedResolver }
   ) => {
+    const {filename, createReadStream} = await avatar;
+    const readStream = createReadStream();
+    const writeStream = fs.createWriteStream(process.cwd() + "/uploads" + filename);
+    readStream.pip(writeStream);
     let uglyPassword = null;
     if(newPassword) {
       uglyPassword = await bcrypt.hash(newPassword, 10);

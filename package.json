@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server",
+    "preinstall": "npx npm-force-resolutions",
+    "dev": "nodemon --exec babel-node server.js --delay 2s",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio"
   },
@@ -19,25 +20,26 @@
   },
   "homepage": "https://github.com/fined187/Instagram-backend#readme",
   "dependencies": {
-    "@apollo/server": "^4.4.0",
-    "@graphql-tools/load-files": "^6.6.1",
-    "@graphql-tools/merge": "^8.3.18",
-    "@graphql-tools/schema": "^9.0.16",
-    "@prisma/client": "^4.10.1",
-    "apollo-server": "^3.11.1",
-    "apollo-server-express": "^3.11.1",
-    "bcrypt": "^5.1.0",
-    "dotenv": "^16.0.3",
-    "graphql": "^16.6.0",
-    "graphql-upload": "^16.0.2",
-    "jsonwebtoken": "^9.0.0"
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@prisma/client": "^4.11.0",
+    "apollo-server-express": "^2.19.2",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "graphql-tools": "^7.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "npm": "^7.11.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/node": "^7.20.7",
-    "@babel/preset-env": "^7.20.2",
     "nodemon": "^2.0.20",
     "prisma": "^4.10.1"
   },
-  "type": "module"
+  "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
+  }
 }

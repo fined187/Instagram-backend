@@ -1,6 +1,5 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server-express";
 //@ts-ignore
-import Upload from "graphql-upload/Upload.mjs";
 
 export default gql` 
   scalar Upload
