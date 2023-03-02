@@ -6,8 +6,7 @@ import express from "express";
 import logger from "morgan";
 
 const PORT = process.env.PORT;
-const startServer = async() => {
-  const server = new ApolloServer({
+  const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     context: async ({req}) => {
@@ -17,9 +16,8 @@ const startServer = async() => {
     },
   });
   const app = express();
-  app.use(logger("tiny"));
-  server.applyMiddleware({ app });
+  apollo.applyMiddleware({ app });
+  app.use("/static", express.static("uploads"));
   app.listen({ port: PORT }, () => {
-    console.log(`🚀Server is running on http://localhost:${PORT} ✅`);
+    console.log(`🚀Server is running on http://localhost:${PORT}/graphql ✅`);
   });
-}

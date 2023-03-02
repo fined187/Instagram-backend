@@ -2,7 +2,6 @@ import { gql } from "apollo-server-express";
 //@ts-ignore
 
 export default gql` 
-  scalar Upload
 
   type EditProfileResult {
     ok: Boolean!

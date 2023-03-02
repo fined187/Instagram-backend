@@ -1,8 +1,7 @@
-import fs, { write } from "fs";
+import {createWriteStream} from "fs";
 import client from "../../client.js";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils.js";
-import {GraphQLUpload} from "graphql-upload";
 
 const resolverFn = async (_, 
   {
@@ -13,12 +12,17 @@ const resolverFn = async (_,
     password: newPassword,
     bio, 
     avatar
-  }, { loggedInUser, protectedResolver }
+  }, { loggedInUser }
   ) => {
-    const {filename, createReadStream} = await avatar;
-    const readStream = createReadStream();
-    const writeStream = fs.createWriteStream(process.cwd() + "/uploads" + filename);
-    readStream.pip(writeStream);
+    let avatarUrl = null;
+    if(avatar) {
+      const {filename, createReadStream} = await avatar;
+      const newfilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+      const readStream = createReadStream();
+      const writeStream = fs.createWriteStream(process.cwd() + "/uploads" + newfilename);
+      readStream.pip(writeStream);
+      avatarUrl = `http://localhost:4000/static/${newfilename}`;
+    }
     let uglyPassword = null;
     if(newPassword) {
       uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -28,7 +32,7 @@ const resolverFn = async (_,
         id: loggedInUser.id,
       }, 
       data: {
-        firstName, lastName, userName, email, ...(uglyPassword && {password: uglyPassword}), bio,
+        firstName, lastName, userName, email, ...(uglyPassword && {password: uglyPassword}), bio, ...(avatarUrl && {avatar: avatarUrl}),
       },
     }
   );
@@ -50,5 +54,4 @@ export default {
       resolverFn
     ),
   },
-  Upload: GraphQLUpload,
 };
