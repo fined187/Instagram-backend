@@ -7,6 +7,12 @@ export default {
         where: {userName},
         select: {id: true},
       });
+      if (!ok) {
+        return {
+          ok: false,
+          error: "User does not found"
+        }
+      }
       const followers = await client.user.findUnique({where: {
         userName,
       }}).followers({
