@@ -1,9 +1,9 @@
-import {createWriteStream} from "fs";
-import client from "../../client.js";
+import client from "../../client";
 import bcrypt from "bcrypt";
-import { protectedResolver } from "../users.utils.js";
+import { protectedResolver } from "../users.utils";
+import fs from "fs";
 
-const resolverFn = async (_, 
+const resolverFn: any = async (_, 
   {
     firstName, 
     lastName,

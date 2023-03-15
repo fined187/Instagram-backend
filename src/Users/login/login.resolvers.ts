@@ -1,4 +1,4 @@
-import client from "../../client.js";
+import client from "../../client";
 import bycrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
