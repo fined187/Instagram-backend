@@ -1,17 +1,17 @@
-import { User } from '@prisma/client';
 import { gql } from 'apollo-server-express';
+
 export default gql`
   type Photo {
-    id: String!
-    user: User
+    id: Int!
+    user: User!
     file: String!
     caption: String
-    hashtag: [Hashtag]
+    hashtags: [Hashtag]
     createAt: String!
     updatedAt: String!
   }
   type Hashtag {
-    id: String!
+    id: Int!
     hashtag: String!
     photos: [Photo]
     createAt: String!
