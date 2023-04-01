@@ -1,5 +1,5 @@
-import client from "../client";
-import { protectedResolver } from "../Users/users.utils";
+import client from "../../client";
+import { protectedResolver } from "../../Users/users.utils";
 
 export default {
   Query: {
@@ -14,5 +14,5 @@ export default {
         },
       })
     ),
-  }
-}
+  },
+};
