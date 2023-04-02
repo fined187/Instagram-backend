@@ -24,15 +24,20 @@
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@prisma/client": "^4.11.0",
+    "apollo-server-core": "^3.12.0",
     "apollo-server-express": "^2.19.2",
     "aws-sdk": "^2.1343.0",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.4.0",
+    "graphql-subscriptions": "^2.0.0",
     "graphql-tools": "^7.0.2",
+    "graphql-upload": "^13.0.0",
+    "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "subscriptions-transport-ws": "^0.9.19"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
