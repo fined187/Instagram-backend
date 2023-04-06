@@ -30,7 +30,7 @@ export default {
       }
       const exists = await client.user.count({
         where: {
-          userName: loggedInUser.userName,
+          userName: loggedInUser.username,
           following: {
             some: {
               id,

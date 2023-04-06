@@ -1,7 +1,6 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
-import fs from "fs";
 import { uploadToS3 } from "../../Shared/shared.utils";
 
 const resolverFn: any = async (_, 
