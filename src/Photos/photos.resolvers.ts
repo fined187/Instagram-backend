@@ -21,10 +21,18 @@ export default {
         photoId: id,
       },
     }),
-    comments: ({id}) => client.comment.count({
+    commentsNumber: ({id}) => client.comment.count({
+      where: {
+        photoId: id,
+      }
+    }),
+    comments: ({id}) => client.comment.findMany({
       where: {
         photoId: id,
       },
+      include: {
+        user: true
+      }
     }),
     isMine: ({userId}, _, {loggedInUser}) => {
       if(!loggedInUser) {
