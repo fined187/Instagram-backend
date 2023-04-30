@@ -2,35 +2,39 @@ import client from "../client";
 
 export default {
   User: {
-    totalFollowing: ({id}) => client.user.count({where: {
-      followers: {
-        some: {
-          id
-        },
-      },
-    }}),
-    totalFollowers: ({id}) => client.user.count({
-      where: {
-        following: {
-          some: {
-            id,
+    totalFollowing: ({ id }) =>
+      client.user.count({
+        where: {
+          followers: {
+            some: {
+              id,
+            },
           },
         },
-      },
-    }),
-    isMe: ({id}, _, {loggedInUser}) => {
-      if(!loggedInUser) {
+      }),
+    totalFollowers: ({ id }) =>
+      client.user.count({
+        where: {
+          following: {
+            some: {
+              id,
+            },
+          },
+        },
+      }),
+    isMe: ({ id }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
         return false;
       }
       return id === loggedInUser.id;
     },
-    isFollowing: async ({id}, _, {loggedInUser}) => {
-      if(!loggedInUser) {
+    isFollowing: async ({ id }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
         return false;
       }
       const exists = await client.user.count({
         where: {
-          userName: loggedInUser.username,
+          userName: loggedInUser.userName,
           following: {
             some: {
               id,
@@ -40,10 +44,6 @@ export default {
       });
       return Boolean(exists);
     },
-    photos: ({id}) => client.user.findUnique({
-      where: {
-        id,
-      },
-    }).photos(),
+    photos: ({ id }) => client.user.findUnique({ where: { id } }).photos(),
   },
 };
